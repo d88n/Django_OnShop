@@ -6,14 +6,18 @@ import main
 # Create your views here.
 def index(request):
     context = {
-        'title': 'Home',
-        'content': 'Main page of the Online shop',
-        'list': ['First', 'Second', 'Third'],
-        'dict': {'first': 1, 'second': 2, 'third': 3},
-        'boolean': True,
+        'title': 'Home - Главная страница',
+        'content': 'Магазин мебели HOME',
+
     }
 
     return render(request, 'main/index.html', context)
 
 def about(request):
-    return HttpResponse('About page') 
+    context = {
+        'title': 'About - О нас',
+        'content': 'Информация о магазине HOME',
+        'text_on_page': 'Мы - команда профессионалов, специализирующихся на продаже качественной мебели. Наша цель - предоставить клиентам широкий выбор стильной и функциональной мебели для дома и офиса. Мы гордимся тем, что предлагаем только проверенные бренды и высококачественные материалы. Наша команда всегда готова помочь вам выбрать идеальные решения для вашего интерьера. Спасибо, что выбрали нас!',
+        }
+    
+    return render(request, 'main/about.html', context)
