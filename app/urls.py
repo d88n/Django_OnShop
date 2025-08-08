@@ -17,7 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from debug_toolbar.toolbar import debug_toolbar_urls
-from app.settings import DEBUG
+from django.views import static
+from app import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -26,5 +28,6 @@ urlpatterns = [
     path('catalog/', include('goods.urls', namespace='catalog')),
 ]
 
-if DEBUG:
-    urlpatterns += debug_toolbar_urls() 
+if settings.DEBUG:
+    urlpatterns += debug_toolbar_urls()
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
